@@ -1,0 +1,21 @@
+/* Dark color scheme
+   ========================================================================== */
+
+:root {
+    --background: hsla(207, 15%, 15%, 1);
+    /*light-black*/
+    --element-interactive: hsla(335, 85%, 45%, 1);
+    /*purple*/
+    --element-interactive-sub: hsla(335, 85%, 45%, .5);
+    /*light-purple*/
+    --element-active: hsla(207, 65%, 45%, 1);
+    /*blue*/
+    --graphic: hsla(207, 20%, 13%, 1);
+    /*darker-light-black*/
+    --heading-color: hsla(207, 5%, 100%, 1);
+    /*white*/
+    --text-color: hsla(207, 15%, 65%, 1);
+    /*blue-white*/
+    --text-color-sub: hsla(207, 10%, 55%, 1);
+    /*light-blue*/
+}

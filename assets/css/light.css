@@ -1,0 +1,21 @@
+:root {
+    --background: hsla(207, 0%, 100%, 1);
+    /*white*/
+
+    --element-interactive: hsla(335, 85%, 45%, 1);
+    /*purple*/
+    --element-interactive-sub: hsla(335, 85%, 45%, .5);
+    /*light-purple*/
+    --element-active: hsla(207, 65%, 45%, 1);
+    /*blue*/
+
+    --graphic: hsla(207, 10%, 96%, 1);
+    /*white-blue*/
+
+    --heading-color: hsla(207, 44%, 10%, 1);
+    /*black*/
+    --text-color: hsla(207, 15%, 40%, 1);
+    /*light-black*/
+    --text-color-sub: hsla(207, 10%, 50%, 1);
+    /*light-grey*/
+}

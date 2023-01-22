@@ -1,0 +1,153 @@
+@media (min-width: 640px) {
+    :root {
+        --M: 1.25rem;
+    }
+
+    body {
+        grid-template-columns: minmax(var(--XL), auto) minmax(auto,
+                calc(48 * var(--M))) minmax(var(--XL), auto);
+    }
+
+    content p a {
+        background-size: 100% 0.3em, 0 0.3em;
+        background-position: 0.3em 95%, 0.3em 95%;
+    }
+
+    a:hover {
+        background-size: 0 0.3em, 100% 0.3em;
+    }
+
+    content section {
+        grid-template-columns: 1fr 1fr;
+        grid-column-gap: var(--M);
+    }
+
+    content section>* {
+        grid-column: span 2;
+    }
+
+    /* Presenter Styling
+          ========================================================================== */
+    section#presenter svg {
+        display: block;
+        width: calc(100% + (2 * var(--L)));
+        margin-bottom: calc(-1 * var(--L));
+        margin-left: calc(-1 * var(--L));
+    }
+
+    section#presenter svg .path {
+        stroke-dasharray: 3920;
+        stroke-dashoffset: 0;
+        animation: dash 15s ease-in-out;
+        stroke: var(--graphic);
+        stroke-width: 2;
+    }
+
+    @keyframes dash {
+        from {
+            stroke-dashoffset: 3920;
+        }
+
+        to {
+            stroke-dashoffset: 0;
+        }
+    }
+
+    /* Life Stack Styling
+          ========================================================================== */
+    .item {
+        grid-column: span 1;
+    }
+}
+
+@media (min-width: 1280px) {
+    body {
+        grid-template-columns: minmax(var(--XXL), auto) minmax(auto,
+                calc(64 * var(--M))) minmax(var(--XXL), auto);
+    }
+
+    content {
+        margin-bottom: calc(3 * var(--XXL));
+    }
+
+    content section {
+        /* grid-template-columns: repeat(3, 1fr); */
+        grid-column-gap: var(--L);
+        margin-top: calc(3 * var(--XXL));
+    }
+
+    content section:first-of-type {
+        margin-top: calc(2 * var(--XXL));
+    }
+
+    content section>* {
+        grid-column: span 2;
+    }
+
+    /* Header & Footer Styling
+           ========================================================================== */
+    header,
+    footer {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column-gap: var(--L);
+        font-size: var(--XS);
+    }
+
+    header> :nth-child(2),
+    footer> :nth-child(2) {
+        justify-self: center;
+    }
+
+    header> :nth-child(2) {
+        display: inherit;
+    }
+
+    footer> :nth-child(3) {
+        display: inherit;
+    }
+
+    .contact span {
+        display: inline;
+    }
+
+    /* Presenter Styling
+           ========================================================================== */
+    section#presenter>* {
+        grid-column: 1 / -1;
+    }
+
+    section#presenter svg {
+        width: calc(100% + (2 * var(--XL)));
+        margin-bottom: calc(-1 * var(--XXL));
+        margin-left: calc(-1 * var(--XL));
+    }
+
+    /* Design Process Styling
+           ========================================================================== */
+    section#process {
+        grid-column-gap: var(--XXL);
+    }
+
+    section#process>h2,
+    section#process>p {
+        grid-column: 1 / 2;
+    }
+
+    #graphic {
+        grid-column: 2 / -1;
+        grid-row: 1 / 4;
+        align-self: center;
+    }
+
+    /* Life Stack Styling
+           ========================================================================== */
+    .item {
+        grid-column-start: inherit;
+        padding: var(--L);
+        margin-bottom: var(--L);
+    }
+
+    .item:first-of-type {
+        grid-column-start: 1;
+    }
+}

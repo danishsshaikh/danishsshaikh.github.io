@@ -1,0 +1,39 @@
+@font-face {
+    font-family: 'Gilroy Light';
+    src: url('../fonts/gilroy-light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy Semi Bold';
+    src: url('../fonts/gilroy-semibold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Gilroy Extra Bold';
+    src: url('../fonts/gilroy-extrabold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'JetBrainsMono';
+    src: url('../fonts/jetbrainsmono.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Reenie Beanie';
+    src: url('../fonts/reeniebeanie.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
