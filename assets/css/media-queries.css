@@ -58,6 +58,11 @@
     .item {
         grid-column: span 1;
     }
+
+    .projects-grid-primary,
+    .projects-grid-extra {
+        grid-template-columns: 1fr 1fr;
+    }
 }
 
 @media (min-width: 1280px) {
@@ -93,17 +98,13 @@
         font-size: var(--XS);
     }
 
+    footer> :nth-child(3) {
+        display: inherit;
+    }
+
     header> :nth-child(2),
     footer> :nth-child(2) {
         justify-self: center;
-    }
-
-    header> :nth-child(2) {
-        display: inherit;
-    }
-
-    footer> :nth-child(3) {
-        display: inherit;
     }
 
     .contact span {
@@ -148,6 +149,11 @@
     }
 
     .item:first-of-type {
+        grid-column-start: 1;
+    }
+
+    .projects-grid-primary .item:first-of-type,
+    .projects-grid-extra .item:first-of-type {
         grid-column-start: 1;
     }
 }

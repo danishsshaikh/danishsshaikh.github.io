@@ -179,7 +179,8 @@ svg .path {
 header,
 footer {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr auto auto;
+    grid-column-gap: var(--S);
     height: var(--XXL);
     align-items: center;
     justify-items: right;
@@ -205,8 +206,19 @@ footer h3 {
     font-size: var(--M);
 }
 
-header> :nth-child(2) {
-    display: none;
+#lightswitch {
+    align-items: center;
+    color: var(--text-color-sub);
+    display: inline-flex;
+    font-size: var(--XS);
+    justify-content: center;
+    min-height: calc(1.5 * var(--M));
+    padding: 0;
+    white-space: nowrap;
+}
+
+#lightswitch:hover {
+    color: var(--heading-color);
 }
 
 footer> :nth-child(3) {
@@ -215,10 +227,14 @@ footer> :nth-child(3) {
 
 .contact {
     display: grid;
-    grid-template-columns: repeat(4, max-content);
+    grid-template-columns: repeat(5, max-content);
     grid-column-gap: var(--S);
     justify-items: center;
     align-items: center;
+}
+
+.subline-note {
+    color: var(--text-color-sub);
 }
 
 .contact span {
@@ -289,6 +305,80 @@ section#presenter svg {
     padding: var(--M);
     border-radius: var(--XXS);
     margin-bottom: var(--M);
+}
+
+.projects-grid,
+.projects-grid-primary,
+.projects-grid-extra {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--M);
+}
+
+.projects-grid {
+    grid-column: 1 / -1;
+}
+
+.projects-grid .item {
+    margin-bottom: 0;
+}
+
+.projects-toggle-row {
+    grid-column: 1 / -1;
+}
+
+.projects-toggle-row-bottom {
+    margin-top: var(--M);
+}
+
+.projects-toggle {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: var(--text-color-sub);
+    display: flex;
+    font: inherit;
+    gap: var(--S);
+    justify-content: center;
+    padding: 0;
+    text-transform: lowercase;
+    width: 100%;
+}
+
+.projects-toggle::before,
+.projects-toggle::after {
+    border-top: 1px solid var(--graphic);
+    content: "";
+    flex: 1;
+    transition: border-color .3s ease;
+}
+
+.projects-toggle:hover,
+.projects-toggle:focus-visible {
+    color: var(--heading-color);
+}
+
+.projects-toggle:hover::before,
+.projects-toggle:hover::after,
+.projects-toggle:focus-visible::before,
+.projects-toggle:focus-visible::after {
+    border-color: var(--element-active);
+}
+
+.projects-grid-extra {
+    margin-top: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    pointer-events: none;
+    transition: max-height .35s ease, opacity .2s ease, margin-top .35s ease;
+}
+
+.projects-grid-extra.is-expanded {
+    margin-top: var(--M);
+    max-height: 4000px;
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .item:hover h3 {

@@ -4,10 +4,10 @@
 :root {
     --background: hsla(207, 15%, 15%, 1);
     /*light-black*/
-    --element-interactive: hsla(335, 85%, 45%, 1);
-    /*purple*/
-    --element-interactive-sub: hsla(335, 85%, 45%, .5);
-    /*light-purple*/
+    --element-interactive: hsla(262, 88%, 74%, 1);
+    /*indigo-purple*/
+    --element-interactive-sub: hsla(262, 88%, 74%, .62);
+    /*light-indigo-purple*/
     --element-active: hsla(207, 65%, 45%, 1);
     /*blue*/
     --graphic: hsla(207, 20%, 13%, 1);
