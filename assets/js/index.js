@@ -8,6 +8,7 @@ var currentTime = new Date().getTime() / 1e3,
 function ready() {
     adjustAboveTheFold();
     initProjectsToggle();
+    initDesignCarousels();
 
     let mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -87,6 +88,130 @@ function initProjectsToggle() {
                 block: "start"
             });
         }, 50);
+    });
+}
+
+function initDesignCarousels() {
+    const carousels = document.querySelectorAll(".design-carousel");
+
+    carousels.forEach(function(carousel) {
+        const viewportElement = carousel.querySelector(".design-carousel-viewport");
+        const trackElement = carousel.querySelector(".design-carousel-track");
+        const previousButton = carousel.querySelector(".design-carousel-button-prev");
+        const nextButton = carousel.querySelector(".design-carousel-button-next");
+        const title = carousel.getAttribute("data-title") || "project";
+        const destinationUrl = carousel.getAttribute("data-url");
+        const images = (carousel.getAttribute("data-images") || "")
+            .split(",")
+            .map(function(path) {
+                return path.trim();
+            })
+            .filter(Boolean);
+        let currentIndex = 1;
+        let isAnimating = false;
+
+        if (!viewportElement || !trackElement || !previousButton || !nextButton || !images.length) {
+            return;
+        }
+
+        if (images.length > 1) {
+            const slides = [images[images.length - 1]].concat(images, images[0]);
+
+            trackElement.innerHTML = slides.map(function(path, slideIndex) {
+                const realIndex = slideIndex === 0 ? images.length : slideIndex > images.length ? 1 : slideIndex;
+
+                return '<img src="' + path + '" alt="' + title + ' product design screenshot ' + realIndex + '" class="design-carousel-image">';
+            }).join("");
+        } else {
+            trackElement.innerHTML = '<img src="' + images[0] + '" alt="' + title + ' product design screenshot 1" class="design-carousel-image">';
+        }
+
+        function setTrackPosition(animated) {
+            if (!animated) {
+                trackElement.classList.add("is-snapping");
+            } else {
+                trackElement.classList.remove("is-snapping");
+            }
+
+            trackElement.style.transform = "translateX(" + (currentIndex * -100) + "%)";
+
+            if (!animated) {
+                window.requestAnimationFrame(function() {
+                    trackElement.classList.remove("is-snapping");
+                });
+            }
+        }
+
+        function moveTo(direction) {
+            if (images.length < 2 || isAnimating) {
+                return;
+            }
+
+            isAnimating = true;
+            currentIndex += direction;
+            setTrackPosition(true);
+        }
+
+        function normalizeLoopPosition() {
+            if (images.length < 2) {
+                return;
+            }
+
+            if (currentIndex === 0) {
+                currentIndex = images.length;
+                setTrackPosition(false);
+            } else if (currentIndex === images.length + 1) {
+                currentIndex = 1;
+                setTrackPosition(false);
+            }
+
+            isAnimating = false;
+        }
+
+        setTrackPosition(false);
+
+        previousButton.addEventListener("click", function() {
+            moveTo(-1);
+        });
+
+        nextButton.addEventListener("click", function() {
+            moveTo(1);
+        });
+
+        function openDestination() {
+            if (!destinationUrl) {
+                return;
+            }
+
+            window.open(destinationUrl, "_blank", "noopener,noreferrer");
+        }
+
+        previousButton.addEventListener("click", function(event) {
+            event.stopPropagation();
+        });
+
+        nextButton.addEventListener("click", function(event) {
+            event.stopPropagation();
+        });
+
+        carousel.addEventListener("click", function() {
+            openDestination();
+        });
+
+        carousel.addEventListener("keydown", function(event) {
+            if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                openDestination();
+            }
+        });
+
+        trackElement.addEventListener("transitionend", function(event) {
+            if (event.propertyName !== "transform") {
+                return;
+            }
+
+            normalizeLoopPosition();
+        });
     });
 }
 

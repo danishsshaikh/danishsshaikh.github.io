@@ -433,8 +433,28 @@ section#presenter svg {
     cursor: pointer;
 }
 
+.work-example-link {
+    color: inherit;
+    text-decoration: none;
+}
+
 .work-example:hover {
     transform: translateY(-2px);
+}
+
+.media-tile {
+    background-color: var(--color-bg-surface-1);
+    padding-block-start: 0;
+}
+
+.media-tile .work-example-preview {
+    block-size: 100%;
+    display: block;
+}
+
+.media-tile:hover,
+.media-tile:active {
+    transform: none;
 }
 
 .work-example:active {
@@ -479,8 +499,91 @@ section#presenter svg {
     transition: 0.2125s transform var(--hover-easing);
 }
 
+.design-carousel-grid {
+    align-items: stretch;
+}
+
+.design-carousel {
+    cursor: pointer;
+    text-align: left;
+}
+
+.design-carousel-stage {
+    display: flex;
+    flex: 1;
+    min-block-size: 0;
+    position: relative;
+}
+
+.design-carousel-viewport {
+    block-size: 100%;
+    inline-size: 100%;
+    min-block-size: 0;
+    overflow: hidden;
+}
+
+.design-carousel-track {
+    block-size: 100%;
+    display: flex;
+    inline-size: 100%;
+    transition: transform .7s cubic-bezier(0.22, 0.61, 0.36, 1);
+    will-change: transform;
+}
+
+.design-carousel-track.is-snapping {
+    transition: none;
+}
+
+.design-carousel-button {
+    align-items: center;
+    background: color-mix(in srgb, var(--carousel-accent) 32%, rgba(18, 24, 33, 0.68) 68%);
+    border: 1px solid var(--carousel-accent);
+    border-radius: 999px;
+    color: #fff;
+    display: inline-flex;
+    font-size: var(--S);
+    inline-size: 30px;
+    justify-content: center;
+    min-block-size: 30px;
+    opacity: 1;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: background-color .2s ease, border-color .2s ease, opacity .2s ease;
+    z-index: 1;
+}
+
+.design-carousel-button-prev {
+    left: 10px;
+}
+
+.design-carousel-button-next {
+    right: 10px;
+}
+
+.design-carousel-button:hover,
+.design-carousel-button:focus-visible {
+    background: color-mix(in srgb, var(--carousel-accent) 48%, rgba(18, 24, 33, 0.72) 52%);
+    border-color: var(--carousel-accent);
+    color: #fff;
+}
+
+.design-carousel-image {
+    block-size: 100%;
+    flex: 0 0 100%;
+    inline-size: 100%;
+    min-block-size: 0;
+    object-fit: cover;
+    display: block;
+}
+
 .work-example:hover .work-example-preview {
     transform: scale(1.005) translateY(-3px);
+}
+
+.media-tile:hover .work-example-preview,
+.media-tile:active .work-example-preview {
+    transform: none;
 }
 
 .one-core-toolbox-preview:hover .work-example-preview {
@@ -842,6 +945,16 @@ body.dialog-open {
 
     .work-example {
         block-size: min(300px, 40vw);
+    }
+
+    .design-carousel {
+        block-size: min(300px, 40vw);
+    }
+
+    .design-carousel-button {
+        inline-size: 32px;
+        min-block-size: 32px;
+        opacity: 1;
     }
 
     .work-examples-header {
